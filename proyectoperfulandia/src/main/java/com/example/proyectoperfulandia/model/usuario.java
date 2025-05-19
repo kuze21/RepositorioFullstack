@@ -1,10 +1,17 @@
 package com.example.proyectoperfulandia.model;
 
-public class usuario {
-    private String rut;
+import jakarta.persistence.*;
+import lombok.*;
 
-    private String name;
-    private String lastName;
-    private String mail;
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class usuario {
+    private Integer id;
+    private String rut;
+    private String nombre;
+    private EnumRol rol;
+    private String email;
     private String password;
 }
