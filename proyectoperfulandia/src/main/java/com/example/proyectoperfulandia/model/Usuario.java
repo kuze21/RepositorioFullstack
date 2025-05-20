@@ -1,11 +1,12 @@
 package com.example.proyectoperfulandia.model;
 
+import jakarta.persistence.Inheritance;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+// revisar @Inheritance con el gemini
 public class Usuario {
     private Integer id;
     private String rut;
