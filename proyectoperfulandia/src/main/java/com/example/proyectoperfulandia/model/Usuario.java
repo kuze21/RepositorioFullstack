@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Usuario {
-    private Integer id;
+    private int id;
     private String rut;
     private String nombre;
     private EnumRol rol;
