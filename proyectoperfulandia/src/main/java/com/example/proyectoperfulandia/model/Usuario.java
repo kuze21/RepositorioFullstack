@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 // revisar @Inheritance con el gemini
 public class Usuario {
-    private Integer id;
+    private int id;
     private String rut;
     private String nombre;
     private EnumRol rol;
