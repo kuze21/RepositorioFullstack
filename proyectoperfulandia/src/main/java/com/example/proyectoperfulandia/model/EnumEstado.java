@@ -1,22 +1,13 @@
 package com.example.proyectoperfulandia.model;
 
+public enum EnumEstado {
+    PENDIENTE,
+    PROCESO,
+    ENVIADO,
+    ENTREGADO,
+    CANCELADO;
 
-import java.util.ArrayList;
-import java.util.List;
-import lombok.*;
-
-@Data
-@AllArgsConstructor
-
-public class EnumEstado {
-    private List<String> estado = new ArrayList<>();
-
-    public EnumEstado() {
-        estado = new ArrayList<>();
-        estado.add("PENDIENTE");
-        estado.add("PROCESO");
-        estado.add("ENVIADO");
-        estado.add("ENTREGADO");
-        estado.add("CANCELADO");
+    public String getDisplayName() {
+        return this.name();
     }
 }

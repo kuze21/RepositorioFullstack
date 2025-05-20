@@ -1,9 +1,6 @@
 package com.example.proyectoperfulandia.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -13,6 +10,7 @@ import lombok.Data;
 @NoArgsConstructor
 
 @Entity
+@Table(name = "PRODUCTOS")
 public class Producto {
 
     @Id

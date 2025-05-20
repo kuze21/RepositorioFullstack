@@ -1,21 +1,12 @@
 package com.example.proyectoperfulandia.model;
 
+public enum EnumRol {
+    CLIENTE,
+    EMPLEADO,
+    GERENTE,
+    ADMIN;
 
-import java.util.List;
-import java.util.ArrayList;
-import lombok.*;
-
-@Data
-@AllArgsConstructor
-
-public class EnumRol {
-    private List<String> roles = new ArrayList<>();
-
-    public EnumRol() {
-        roles = new ArrayList<>();
-        roles.add("CLIENTE");
-        roles.add("EMPLEADO");
-        roles.add("GERENTE");
-        roles.add("ADMIN");
+    public String getDisplayName() {
+        return this.name();
     }
 }
