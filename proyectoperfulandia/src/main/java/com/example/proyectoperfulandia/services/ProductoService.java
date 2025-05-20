@@ -20,7 +20,7 @@ public class ProductoService {
         String output = "";
         for (Producto producto : productoRepository.findAll()) {
             output += "ID Producto: "+ producto.getId() + "\n";
-            output += "Nombre: "+ producto.getNombre()) + "\n";
+            output += "Nombre: "+ producto.getNombre() + "\n";
             output += "Categoría: "+ producto.getCategoria() + "\n";
             output += "Precio: $"+ producto.getPrecio() + "\n";
             output += "Stock: "+ producto.getStock() + "\n";
