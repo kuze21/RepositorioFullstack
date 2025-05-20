@@ -1,4 +1,4 @@
 package com.example.proyectoperfulandia.model;
 
-public class factura {
+public class Factura {
 }

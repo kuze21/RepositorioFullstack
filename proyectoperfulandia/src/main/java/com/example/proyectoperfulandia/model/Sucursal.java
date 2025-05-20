@@ -1,4 +1,4 @@
 package com.example.proyectoperfulandia.model;
 
-public class pedido {
+public class Sucursal {
 }

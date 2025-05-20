@@ -9,6 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 // @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class cliente extends usuario{
+public class Cliente extends Usuario {
 }
 

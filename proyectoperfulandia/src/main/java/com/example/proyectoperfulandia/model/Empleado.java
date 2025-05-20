@@ -11,5 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class administrador extends usuario {
+public class Empleado extends Usuario {
+    private String sucusalid;
 }

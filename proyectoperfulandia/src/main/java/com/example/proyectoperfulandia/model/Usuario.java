@@ -1,13 +1,12 @@
 package com.example.proyectoperfulandia.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class usuario {
+public class Usuario {
     private Integer id;
     private String rut;
     private String nombre;
