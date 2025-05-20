@@ -17,6 +17,24 @@ public class UsuarioController {
         return usuarioService.getUsuarios();
     }
 
-    @GetMapping("/{id}");
+    @PostMapping
+    public String addUsuario(@RequestBody Usuario usuario){
+        return usuarioService.addUsuario(usuario);
+    }
+
+    @GetMapping("/{id}")
+    public String getUsuario(@PathVariable int id){
+        return usuarioService.getUsuario(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String removeUsuario(@PathVariable int id){
+        return usuarioService.removeUsuario(id);
+    }
+
+    @PutMapping("/{id}")
+    public String updateUsuario(@PathVariable int id, @RequestBody Usuario usuario){
+        return usuarioService.updateUsuario(id, usuario);
+    }
 
 }

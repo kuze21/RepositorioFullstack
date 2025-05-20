@@ -42,9 +42,9 @@ public class UsuarioRepository {
         return "No existe el usuario con ese nombre";
     }
 
-    public String removeUsuario(int Id) {
+    public String removeUsuario(int id) {
         for (Usuario usuario : Usuarios) {
-            if (usuario.getId() == Id) {
+            if (usuario.getId() == id) {
                 Usuarios.remove(usuario);
                 return "Eliminado con éxito";
             }
@@ -52,10 +52,10 @@ public class UsuarioRepository {
         return "No existe el usuario con ese nombre";
     }
 
-    public String updateUsuario(int Id, Usuario usuario) {
+    public String updateUsuario(int id, Usuario usuario) {
         int index = 0;
         for (Usuario temp : Usuarios) {
-            if (temp.getId() == Id) {
+            if (temp.getId() == id) {
                 index = Usuarios.indexOf(temp);
                 break;
             }
