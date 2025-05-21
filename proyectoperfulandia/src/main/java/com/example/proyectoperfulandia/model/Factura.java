@@ -1,10 +1,10 @@
 package com.example.proyectoperfulandia.model;
 
+import jakarta.persistence.Entity;
 import lombok.*;
 
 @Data
 @AllArgsConstructor
-
 public class Factura {
     private String numero;
     private double subtotal;

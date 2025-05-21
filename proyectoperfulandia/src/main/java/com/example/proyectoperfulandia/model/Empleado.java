@@ -1,16 +1,15 @@
 package com.example.proyectoperfulandia.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@MappedSuperclass
 
 @Entity
+@Table(name = "empleados")
 public class Empleado extends Usuario {
     private String sucursalId;
 }
