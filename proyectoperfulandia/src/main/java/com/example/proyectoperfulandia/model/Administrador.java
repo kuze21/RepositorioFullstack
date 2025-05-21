@@ -1,15 +1,13 @@
 package com.example.proyectoperfulandia.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@MappedSuperclass
 
 @Entity
+@Table(name = "administradores")
 public class Administrador extends Usuario {
 }

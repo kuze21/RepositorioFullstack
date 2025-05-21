@@ -1,9 +1,6 @@
 package com.example.proyectoperfulandia.model;
 
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -13,6 +10,9 @@ import lombok.*;
 @MappedSuperclass
 // revisar @Inheritance con el gemini
 public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String rut;
     private String nombre;

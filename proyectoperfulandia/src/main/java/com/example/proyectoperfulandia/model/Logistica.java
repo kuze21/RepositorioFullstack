@@ -1,14 +1,12 @@
 package com.example.proyectoperfulandia.model;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
 @AllArgsConstructor
-
 public class Logistica {
-    private String pedidoId;
+    private int pedidoId;
 
     @Enumerated(EnumType.STRING)
     private EnumEstadoEnvio estadoEnvio;
