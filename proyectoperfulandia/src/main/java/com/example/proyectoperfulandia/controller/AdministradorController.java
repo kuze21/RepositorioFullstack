@@ -30,7 +30,6 @@ public class AdministradorController {
     @DeleteMapping("/{id}")
     public String removeAdmin(@PathVariable int id){
         return adminService.removeAdmin(id);
-
     }
 
     @PutMapping("/{id}")
