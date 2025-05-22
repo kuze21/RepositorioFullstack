@@ -31,4 +31,6 @@ public class UsuarioService {
         return usuarioRepository.updateUsuario(id,usuario);
     }
 
+    public Usuario autenticarUsuario(String email, String password) { return usuarioRepository.autenticarUsuario(email, password); }
+
 }

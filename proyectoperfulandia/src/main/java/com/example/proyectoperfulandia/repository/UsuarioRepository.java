@@ -39,7 +39,7 @@ public class UsuarioRepository {
                 return usuario.toString();
             }
         }
-        return "No existe el usuario con ese nombre";
+        return "No existe el usuario con esa ID";
     }
 
     public String removeUsuario(int id) {
@@ -49,7 +49,7 @@ public class UsuarioRepository {
                 return "Eliminado con éxito";
             }
         }
-        return "No existe el usuario con ese nombre";
+        return "No existe el usuario con esa ID";
     }
 
     public String updateUsuario(int id, Usuario usuario) {
@@ -64,7 +64,17 @@ public class UsuarioRepository {
             Usuarios.set(index, usuario);
             return "Actualizado con éxito";
         } else {
-            return "No existe el usuario con ese nombre";
+            return "No existe el usuario con esa ID";
         }
     }
+
+    public Usuario autenticarUsuario(String email, String password) {
+        for (Usuario temp : Usuarios) {
+            if (temp.getEmail().equals(email) && temp.getPassword().equals(password)) {
+                return temp;
+            }
+        }
+        return null;
+    }
+
 }
