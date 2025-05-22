@@ -1,9 +1,7 @@
 package com.example.proyectoperfulandia.services;
 
 import com.example.proyectoperfulandia.model.Administrador;
-import com.example.proyectoperfulandia.model.Cliente;
 import com.example.proyectoperfulandia.repository.AdministradorRepository;
-import com.example.proyectoperfulandia.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

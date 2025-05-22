@@ -18,7 +18,7 @@ public class EmpleadoService {
             output += "Nombre: " + empleado.getNombre() + "\n";
             output += "Rol: " + empleado.getRol() + "\n";
             output += "Correo: " + empleado.getEmail() + "\n";
-            output += "ID Sucursal: " + empleado.getSucursalId() + "\n\n";
+            output += "ID Sucursal: " + empleado.getSucursal().getId() + "\n\n";
         }
         if (output.isEmpty()) {
             return "No se encuentran empleados";
@@ -40,7 +40,7 @@ public class EmpleadoService {
             output += "Nombre: " + empleado.getNombre() + "\n";
             output += "Rol: " + empleado.getRol() + "\n";
             output += "Correo: " + empleado.getEmail() + "\n";
-            output += "ID Sucursal: " + empleado.getSucursalId() + "\n\n";
+            output += "ID Sucursal: " + empleado.getSucursal().getId() + "\n\n";
             return output;
         } else {
             return "No se encontraron empleados.";

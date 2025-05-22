@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "producto")
+@Table(name = "productos")
 public class Producto {
 
     @Id
@@ -25,9 +25,16 @@ public class Producto {
     @Column(nullable = false)
     private double precio;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int stock;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String categoria;
+
+    @ManyToMany(mappedBy = "listaProductos")
+    private List<Pedido> pedidos = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "inventario")
+    private List<Sucursal> inventario = new ArrayList<>();
+
 }

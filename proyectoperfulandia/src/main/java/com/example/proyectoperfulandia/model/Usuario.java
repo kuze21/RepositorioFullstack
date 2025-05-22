@@ -7,8 +7,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@MappedSuperclass
-// revisar @Inheritance con el gemini
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -22,4 +23,5 @@ public class Usuario {
 
     private String email;
     private String password;
+
 }
