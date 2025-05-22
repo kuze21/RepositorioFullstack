@@ -1,11 +1,19 @@
 package com.example.proyectoperfulandia.repository;
 
-import java.util.*;
 import com.example.proyectoperfulandia.model.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UsuarioRepository {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+// crear metodo personalizado return usuarioRepository.findByEmailAndPassword(email, password).orElse(null);
+}
+
+
+
+
+
+    /*
     private List<Usuario> Usuarios = new ArrayList<Usuario>();
     public UsuarioRepository() {
 
@@ -76,5 +84,4 @@ public class UsuarioRepository {
         }
         return null;
     }
-
-}
+     */
