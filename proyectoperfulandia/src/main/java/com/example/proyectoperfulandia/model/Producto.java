@@ -13,6 +13,7 @@ import java.util.List;
 @Table(name = "productos")
 public class Producto {
 
+    // Generación automática de IDs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -31,9 +32,11 @@ public class Producto {
     @Column(nullable = true)
     private String categoria;
 
+    // Relacion Varios a varios con Pedido
     @ManyToMany(mappedBy = "listaProductos")
     private List<Pedido> pedidos = new ArrayList<>();
 
+    // Relacion Varios a varios con Sucursal
     @ManyToMany(mappedBy = "inventario")
     private List<Sucursal> inventario = new ArrayList<>();
 

@@ -11,11 +11,13 @@ public class ProductoService {
     @Autowired
     ProductoRepository productoRepository;
 
+    // Añadir producto
     public String agregarProducto(Producto producto) {
         productoRepository.save(producto);
         return "Producto agregado correctamente.";
     }
 
+    // Obtener todos los productos
     public String listarProducto() {
         String output = "";
         for (Producto producto : productoRepository.findAll()) {
@@ -32,6 +34,7 @@ public class ProductoService {
         }
     }
 
+    // Obtiene los productos y sus datos mediante ID
     public String obtenerProductoID(int id) {
         String output = "";
         if (productoRepository.existsById(id)) {
@@ -47,6 +50,7 @@ public class ProductoService {
         }
     }
 
+    // Elimina los productos y sus datos mediante ID
     public String eliminarProducto(int id) {
         if (productoRepository.existsById(id)) {
             productoRepository.deleteById(id);
@@ -56,6 +60,7 @@ public class ProductoService {
         }
     }
 
+    // Actualiza los productos y sus datos mediante ID
     public String actualizarProducto(int id, Producto producto) {
         if (productoRepository.existsById(id)) {
             Producto productoActual = productoRepository.findById(id).get();

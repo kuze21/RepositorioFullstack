@@ -1,5 +1,6 @@
 package com.example.proyectoperfulandia.model;
 
+// Clase de enumeración para establecer estados de envío del pedido
 public enum EnumEstado {
     PENDIENTE,
     PROCESO,

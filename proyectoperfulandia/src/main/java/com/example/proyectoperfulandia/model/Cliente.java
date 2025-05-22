@@ -16,10 +16,12 @@ import java.util.Set;
 @Table(name = "clientes")
 public class Cliente extends Usuario {
 
+    // Establece los roles válidos para este usuario
     private static final Set<EnumRol> ROLES_VALIDOS = EnumSet.of(
             EnumRol.CLIENTE
     );
 
+    // Verifica que el usuario cliente solo pueda obtener el rol CLIENTE
     public void setRol(EnumRol rol) {
         if (!ROLES_VALIDOS.contains(rol)) {
             throw new IllegalArgumentException("Rol no permitido para el cliente.");
@@ -31,6 +33,7 @@ public class Cliente extends Usuario {
     private String direccion;
     private String telefono;
 
+    // Relación uno a varios con Pedido
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

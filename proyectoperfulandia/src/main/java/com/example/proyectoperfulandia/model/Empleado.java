@@ -13,10 +13,11 @@ import java.util.*;
 @Table(name = "empleados")
 public class Empleado extends Usuario {
 
+    // Establece los roles válidos para este usuario
     private static final Set<EnumRol> ROLES_VALIDOS = EnumSet.of(
             EnumRol.EMPLEADO
     );
-
+    // Verifica que el usuario empleado solo pueda obtener el rol EMPLEADO
     public void setRol(EnumRol rol) {
         if (!ROLES_VALIDOS.contains(rol)) {
             throw new IllegalArgumentException("Rol no permitido para el empleado.");
@@ -25,7 +26,8 @@ public class Empleado extends Usuario {
         }
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // Relación varios a uno con Sucursal
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "sucursal_id", nullable = false)
     private Sucursal sucursal;
 

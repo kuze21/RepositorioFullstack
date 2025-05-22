@@ -1,6 +1,5 @@
 package com.example.proyectoperfulandia.services;
 
-import com.example.proyectoperfulandia.model.Administrador;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,13 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    // Añadir un usuario
     public String addUsuario(Usuario usuario) {
         usuarioRepository.save(usuario);
         return "Agregado con éxito";
     }
 
+    // Obtener todos los usuarios
     public String getUsuarios() {
         String output = "";
         for (Usuario usuario : usuarioRepository.findAll()) {
@@ -33,6 +34,7 @@ public class UsuarioService {
 
     }
 
+    // Obtener un usuario mediante ID
     public String getUsuario(int id) {
         String output = "";
         if (usuarioRepository.existsById(id)) {
@@ -46,7 +48,7 @@ public class UsuarioService {
             return "No se encontraron usuarios.";
         }
     }
-
+    // Eliminar un usuario mediante ID
     public String removeUsuario(int id) {
         if (usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
@@ -56,12 +58,13 @@ public class UsuarioService {
         }
     }
 
+    // Actualizar un usuario mediante ID
     public String updateUsuario(int id, Usuario usuario) {
         if (usuarioRepository.existsById(id)) {
-            Administrador adminActual = usuarioRepository.findById(id).get();
-            adminActual.setNombre(usuario.getNombre());
-            adminActual.setEmail(usuario.getEmail());
-            usuarioRepository.save(adminActual);
+            Usuario usuarioActual = usuarioRepository.findById(id).get();
+            usuarioActual.setNombre(usuario.getNombre());
+            usuarioActual.setEmail(usuario.getEmail());
+            usuarioRepository.save(usuarioActual);
             return "Cliente actualizado correctamente.";
         } else {
             return "No se encontraron clientes.";
@@ -69,7 +72,6 @@ public class UsuarioService {
     }
 
     public Usuario autenticarUsuario(String email, String password) {
-        // Suponiendo que el repositorio tiene un método personalizado:
         return usuarioRepository.findByEmailAndPassword(email, password).orElse(null);
     }
 

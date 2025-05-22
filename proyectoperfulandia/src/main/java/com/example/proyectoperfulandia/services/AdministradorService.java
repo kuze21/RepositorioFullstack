@@ -11,6 +11,7 @@ public class AdministradorService {
     @Autowired
     AdministradorRepository administradorRepository;
 
+    // Obtener solo los usuarios con el rol ADMIN y GERENTE
     public String getAdmins(){
         String output = "";
         for (Administrador admin : administradorRepository.findAll()) {
@@ -26,11 +27,13 @@ public class AdministradorService {
         }
     }
 
+    // Añadir un usuario ADMIN
     public String addAdmin(Administrador admin){
         administradorRepository.save(admin);
         return "Administrador agregado con éxito";
     }
 
+    // Obtener un usuario ADMIN mediante ID
     public String getAdminID(int id){
         String output = "";
         if (administradorRepository.existsById(id)) {
@@ -45,6 +48,7 @@ public class AdministradorService {
         }
     }
 
+    // Eliminar un usuario ADMIN mediante ID
     public String removeAdmin(int id){
         if (administradorRepository.existsById(id)) {
             administradorRepository.deleteById(id);
@@ -54,6 +58,7 @@ public class AdministradorService {
         }
     }
 
+    // Actualizar un usuario ADMIN mediante ID
     public String updateAdmin(int id, Administrador admin){
         if (administradorRepository.existsById(id)) {
             Administrador adminActual = administradorRepository.findById(id).get();

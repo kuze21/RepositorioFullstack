@@ -9,6 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 @Table(name = "facturas")
 public class Factura {
+
+    // Generación automática de IDs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numero;

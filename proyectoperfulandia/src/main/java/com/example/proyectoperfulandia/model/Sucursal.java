@@ -13,12 +13,14 @@ import lombok.*;
 @Table(name = "sucursales")
 public class Sucursal {
 
+    // Generación automática de IDs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String direccion;
     private String horario;
 
+    // Relacion Varios a varios con Producto
     @ManyToMany
     @JoinTable(
             name = "sucursal_producto",
@@ -27,6 +29,7 @@ public class Sucursal {
     )
     private List<Producto> inventario = new ArrayList<>();
 
+    // Relacion Uno a varios de Sucursal a Empleado
     @OneToMany(mappedBy = "sucursal")
     private List<Empleado> empleados = new ArrayList<>();
 

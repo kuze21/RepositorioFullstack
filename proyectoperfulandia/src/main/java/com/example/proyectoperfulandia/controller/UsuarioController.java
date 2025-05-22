@@ -1,6 +1,5 @@
 package com.example.proyectoperfulandia.controller;
 
-import com.example.proyectoperfulandia.dto.LoginRequest;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.services.UsuarioService;
 import org.springframework.http.HttpStatus;
@@ -15,39 +14,43 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
+    // Obtener todos los usuarios
     @GetMapping
     public String getUsuarios(){
         return usuarioService.getUsuarios();
     }
 
+    // Añadir usuario sin restriccion de roles
     @PostMapping
     public String addUsuario(@RequestBody Usuario usuario){
         return usuarioService.addUsuario(usuario);
     }
 
+    // Obtener un usuario mediante ID
     @GetMapping("/{id}")
     public String getUsuario(@PathVariable int id){
         return usuarioService.getUsuario(id);
     }
 
+    // Eliminar un usuario mediante ID
     @DeleteMapping("/{id}")
     public String removeUsuario(@PathVariable int id){
         return usuarioService.removeUsuario(id);
     }
 
+    // Actualizar un usuario mediante ID
     @PutMapping("/{id}")
     public String updateUsuario(@PathVariable int id, @RequestBody Usuario usuario){
         return usuarioService.updateUsuario(id, usuario);
     }
 
-    // Preguntar si se pueden usar DTOs para crear las funciones, o si simplemente deben ir dentro de los servicios
+    // Autenticación de usuario (correo y contraseña)
     @PostMapping("/login")
-    public ResponseEntity<?> autenticarUsuario(@RequestBody LoginRequest login) {
-        Usuario usuario = usuarioService.autenticarUsuario(login.getEmail(), login.getPassword());
-        if (usuario != null) {
-            return ResponseEntity.ok("Bienvenido, " + usuario.getNombre());
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Correo o clave incorrectos");
+    public ResponseEntity<?> autenticarUsuario(@RequestBody Usuario usuario) {
+        Usuario usuarioAutenticado = usuarioService.autenticarUsuario(usuario.getEmail(), usuario.getPassword());
+        if (usuarioAutenticado == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
         }
+        return ResponseEntity.ok("Bienvenido, " + usuarioAutenticado.getNombre());
     }
 }

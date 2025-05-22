@@ -11,6 +11,7 @@ public class ClienteService {
     @Autowired
     ClienteRepository clienteRepository;
 
+    // Obtener solo los usuarios con el rol CLIENTE
     public String getClientes(){
         String output = "";
         for (Cliente cliente : clienteRepository.findAll()) {
@@ -27,11 +28,13 @@ public class ClienteService {
         }
     }
 
+    // Añadir un usuario CLIENTE
     public String addCliente(Cliente cliente){
         clienteRepository.save(cliente);
         return "Cliente agregado con éxito";
     }
 
+    // Obtener un usuario CLIENTE mediante ID
     public String getClienteID(int id){
         String output = "";
         if (clienteRepository.existsById(id)) {
@@ -47,6 +50,7 @@ public class ClienteService {
         }
     }
 
+    // Eliminar un usuario CLIENTE mediante ID
     public String removeCliente(int id){
         if (clienteRepository.existsById(id)) {
             clienteRepository.deleteById(id);
@@ -56,6 +60,7 @@ public class ClienteService {
         }
     }
 
+    // Actualizar un usuario CLIENTE mediante ID
     public String updateCliente(int id, Cliente cliente){
         if (clienteRepository.existsById(id)) {
             Cliente clienteActual = clienteRepository.findById(id).get();

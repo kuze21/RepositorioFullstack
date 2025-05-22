@@ -11,6 +11,7 @@ public class EmpleadoService {
     @Autowired
     EmpleadoRepository empleadoRepository;
 
+    // Obtener solo los usuarios con el rol EMPLEADO
     public String getEmpleados(){
         String output = "";
         for (Empleado empleado : empleadoRepository.findAll()) {
@@ -27,11 +28,13 @@ public class EmpleadoService {
         }
     }
 
+    // Añadir un usuario EMPLEADO
     public String addEmpleado(Empleado empleado){
         empleadoRepository.save(empleado);
         return "Empleado agregado con éxito";
     }
 
+    // Obtener un usuario EMPLEADO mediante ID
     public String getEmpleadoID(int id){
         String output = "";
         if (empleadoRepository.existsById(id)) {
@@ -47,6 +50,7 @@ public class EmpleadoService {
         }
     }
 
+    // Eliminar un usuario EMPLEADO mediante ID
     public String removeEmpleado(int id){
         if (empleadoRepository.existsById(id)) {
             empleadoRepository.deleteById(id);
@@ -56,6 +60,7 @@ public class EmpleadoService {
         }
     }
 
+    // Actualizar un usuario EMPLEADO mediante ID
     public String updateEmpleado(int id, Empleado empleado){
         if (empleadoRepository.existsById(id)) {
             Empleado empleadoActual = empleadoRepository.findById(id).get();
