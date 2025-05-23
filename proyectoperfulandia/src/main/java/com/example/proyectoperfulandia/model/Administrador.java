@@ -27,4 +27,5 @@ public class Administrador extends Usuario {
             super.setRol(rol);
         }
     }
+
 }

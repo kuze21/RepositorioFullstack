@@ -70,39 +70,9 @@ public class UsuarioService {
             return "No se encontraron clientes.";
         }
     }
-
+    // Auntenticar un usuario mediante correo y contraseña
     public Usuario autenticarUsuario(String email, String password) {
         return usuarioRepository.findByEmailAndPassword(email, password).orElse(null);
     }
-
-
-
-    /*
-    @Autowired
-    UsuarioRepository usuarioRepository;
-
-    public String getUsuarios(){
-        return usuarioRepository.getUsuarios();
-    }
-
-    public String addUsuario(Usuario usuario){
-        return usuarioRepository.addUsuario(usuario);
-    }
-
-    public String getUsuario(int id){
-        return usuarioRepository.getUsuario(id);
-    }
-
-    public String removeUsuario(int id){
-        return usuarioRepository.removeUsuario(id);
-    }
-
-    public String updateUsuario(int id, Usuario usuario){
-        return usuarioRepository.updateUsuario(id,usuario);
-    }
-
-    public Usuario autenticarUsuario(String email, String password) { return usuarioRepository.autenticarUsuario(email, password); }
-
-     */
 
 }

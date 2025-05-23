@@ -18,4 +18,5 @@ public class Factura {
     private double subtotal;
     private double iva;
     private double total;
+
 }

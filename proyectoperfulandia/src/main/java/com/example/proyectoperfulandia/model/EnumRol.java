@@ -10,4 +10,5 @@ public enum EnumRol {
     public String getDisplayName() {
         return this.name();
     }
+
 }

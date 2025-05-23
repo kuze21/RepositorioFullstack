@@ -53,4 +53,5 @@ public class UsuarioController {
         }
         return ResponseEntity.ok("Bienvenido, " + usuarioAutenticado.getNombre());
     }
+
 }

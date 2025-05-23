@@ -11,4 +11,5 @@ public enum EnumEstado {
     public String getDisplayName() {
         return this.name();
     }
+
 }
