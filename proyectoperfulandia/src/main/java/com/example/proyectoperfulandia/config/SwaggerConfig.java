@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 package com.example.proyectoperfulandia.config;
 
-
+#chilenos
 @Configuration
 public class SwaggerConfig {
 
