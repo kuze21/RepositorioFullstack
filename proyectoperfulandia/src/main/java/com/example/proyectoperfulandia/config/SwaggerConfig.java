@@ -1,11 +1,11 @@
+package com.example.proyectoperfulandia.config;
+
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-package com.example.proyectoperfulandia.config;
 
-#chilenos en chile
 @Configuration
 public class SwaggerConfig {
 
@@ -15,6 +15,6 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("")
                         .version("1.0")
-                        .description("Documentacion de la API para el sistema de proyecto")
+                        .description("Documentacion de la API para el sistema de proyecto"));
     }
 }
