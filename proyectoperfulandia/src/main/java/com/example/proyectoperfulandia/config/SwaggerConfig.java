@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 package com.example.proyectoperfulandia.config;
 
-#chilenos
+#chilenos en chile
 @Configuration
 public class SwaggerConfig {
 
