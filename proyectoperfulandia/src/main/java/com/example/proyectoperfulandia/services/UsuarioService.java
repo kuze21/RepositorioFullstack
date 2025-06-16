@@ -52,9 +52,9 @@ public class UsuarioService {
     public String removeUsuario(int id) {
         if (usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
-            return "Administrados eliminado correctamente.";
+            return "Usuario eliminado correctamente.";
         } else {
-            return "No se encontraron administradores.";
+            return "No se encontraron usuarios.";
         }
     }
 
@@ -65,9 +65,9 @@ public class UsuarioService {
             usuarioActual.setNombre(usuario.getNombre());
             usuarioActual.setEmail(usuario.getEmail());
             usuarioRepository.save(usuarioActual);
-            return "Cliente actualizado correctamente.";
+            return "Usuario actualizado correctamente.";
         } else {
-            return "No se encontraron clientes.";
+            return "No se encontraron usuarios.";
         }
     }
     // Auntenticar un usuario mediante correo y contraseña
