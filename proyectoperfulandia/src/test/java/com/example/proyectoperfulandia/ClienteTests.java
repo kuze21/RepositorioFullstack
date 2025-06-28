@@ -1,8 +1,8 @@
 package com.example.proyectoperfulandia;
 
-import com.example.proyectoperfulandia.model.Producto;
-import com.example.proyectoperfulandia.repository.ProductoRepository;
-import com.example.proyectoperfulandia.services.ProductoService;
+import com.example.proyectoperfulandia.model.Cliente;
+import com.example.proyectoperfulandia.repository.ClienteRepository;
+import com.example.proyectoperfulandia.services.ClienteService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class  ProductoTests {
+class ClienteTests {
 
 	@Autowired
-	ProductoRepository productoRepository;
+	ClienteRepository clienteRepository;
 
 	@MockitoBean
-	ProductoService productoServiceMock;
+	ClienteService clienteServiceMock;
 
 	@Autowired
 	MockMvc mockMvc;
@@ -51,8 +51,9 @@ class  ProductoTests {
 		}
 	}
 	*/
+	/*
 	@Test
-	@DisplayName("Test listar productos")
+	@DisplayName("Test Listar Productos")
 	void testListarProductos(){
 		when(productoServiceMock.listarProducto()).thenReturn("Lista completa");
 		try{
@@ -75,8 +76,7 @@ class  ProductoTests {
 		assertNotNull(prueba);
 		assertEquals(359990,prueba.getPrecio());
 	}
-
-
+*/
 
 
 }

@@ -1,8 +1,8 @@
 package com.example.proyectoperfulandia;
 
-import com.example.proyectoperfulandia.model.Producto;
-import com.example.proyectoperfulandia.repository.ProductoRepository;
-import com.example.proyectoperfulandia.services.ProductoService;
+import com.example.proyectoperfulandia.model.Usuario;
+import com.example.proyectoperfulandia.repository.UsuarioRepository;
+import com.example.proyectoperfulandia.services.UsuarioService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class  ProductoTests {
+class UsuarioTests {
 
 	@Autowired
-	ProductoRepository productoRepository;
+	UsuarioRepository usuarioRepository;
 
 	@MockitoBean
-	ProductoService productoServiceMock;
+	UsuarioService usuarioServiceMock;
 
 	@Autowired
 	MockMvc mockMvc;
@@ -51,14 +51,15 @@ class  ProductoTests {
 		}
 	}
 	*/
+
 	@Test
-	@DisplayName("Test listar productos")
-	void testListarProductos(){
-		when(productoServiceMock.listarProducto()).thenReturn("Lista completa");
+	@DisplayName("Test listar todos los usuarios")
+	void testGetUsuarios() throws Exception {
+		when(usuarioServiceMock.getUsuarios()).thenReturn("Lista correcta");
 		try{
-			mockMvc.perform(get("/productos"))
+			mockMvc.perform(get("/usuarios"))
 					.andExpect(status().isOk())
-					.andExpect(content().string("Lista completa"));
+					.andExpect(content().string("Lista correcta"));
 		}
 
 		catch(Exception ex){
@@ -67,7 +68,7 @@ class  ProductoTests {
 		}
 
 	}
-
+/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){
@@ -75,8 +76,7 @@ class  ProductoTests {
 		assertNotNull(prueba);
 		assertEquals(359990,prueba.getPrecio());
 	}
-
-
+*/
 
 
 }
