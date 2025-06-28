@@ -51,13 +51,13 @@ class AdministradorTests {
 		}
 	}
 	*/
-	/*
+
 	@Test
-	@DisplayName("Test Listar Productos")
-	void testListarProductos(){
-		when(productoServiceMock.listarProducto()).thenReturn("Lista completa");
+	@DisplayName("Test listar todos los administradores")
+	void testGetAdmins(){
+		when(administradorServiceMock.getAdmins()).thenReturn("Lista completa");
 		try{
-			mockMvc.perform(get("/productos"))
+			mockMvc.perform(get("/administradores"))
 					.andExpect(status().isOk())
 					.andExpect(content().string("Lista completa"));
 		}
@@ -68,7 +68,7 @@ class AdministradorTests {
 		}
 
 	}
-
+/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){

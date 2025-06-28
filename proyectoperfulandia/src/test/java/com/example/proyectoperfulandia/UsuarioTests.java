@@ -55,11 +55,11 @@ class UsuarioTests {
 	@Test
 	@DisplayName("Test listar todos los usuarios")
 	void testGetUsuarios() throws Exception {
-		when(usuarioServiceMock.getUsuarios()).thenReturn("Lista correcta");
+		when(usuarioServiceMock.getUsuarios()).thenReturn("Lista completa");
 		try{
 			mockMvc.perform(get("/usuarios"))
 					.andExpect(status().isOk())
-					.andExpect(content().string("Lista correcta"));
+					.andExpect(content().string("Lista completa"));
 		}
 
 		catch(Exception ex){

@@ -51,13 +51,13 @@ class ClienteTests {
 		}
 	}
 	*/
-	/*
+
 	@Test
-	@DisplayName("Test Listar Productos")
-	void testListarProductos(){
-		when(productoServiceMock.listarProducto()).thenReturn("Lista completa");
+	@DisplayName("Test listar todos los clientes")
+	void testGetClientes(){
+		when(clienteServiceMock.getClientes()).thenReturn("Lista completa");
 		try{
-			mockMvc.perform(get("/productos"))
+			mockMvc.perform(get("/clientes"))
 					.andExpect(status().isOk())
 					.andExpect(content().string("Lista completa"));
 		}
@@ -68,7 +68,7 @@ class ClienteTests {
 		}
 
 	}
-
+/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){
