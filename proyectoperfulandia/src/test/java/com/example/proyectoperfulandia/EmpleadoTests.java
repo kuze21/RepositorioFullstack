@@ -61,13 +61,12 @@ class EmpleadoTests {
 					.andExpect(status().isOk())
 					.andExpect(content().string("Lista completa"));
 		}
-
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
 		}
-
 	}
+
 /*
 	@Test
 	@DisplayName("Rectificar precio producto")
@@ -77,6 +76,5 @@ class EmpleadoTests {
 		assertEquals(359990,prueba.getPrecio());
 	}
 */
-
 
 }

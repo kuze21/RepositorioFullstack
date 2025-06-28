@@ -36,7 +36,6 @@ class ClienteTests {
 	void testFuncion(){
 		# Se puede indicar un valor para suplantar y acotar el resultado que se espera de la funcion.
 		when().thenReturn("");
-
 		# Bloque try/catch permite probar un segmento o funcion y agarrar el error
 		# mockMvc permite consultas HTTPMethod
 		try{
@@ -44,7 +43,6 @@ class ClienteTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(""))
 		}
-
 		catch(Exception ex){
 		 System.out.println(ex.getMessage());
 		 fail();
@@ -66,8 +64,8 @@ class ClienteTests {
 			System.out.println(ex.getMessage());
 			fail();
 		}
-
 	}
+
 /*
 	@Test
 	@DisplayName("Rectificar precio producto")
@@ -77,6 +75,5 @@ class ClienteTests {
 		assertEquals(359990,prueba.getPrecio());
 	}
 */
-
 
 }

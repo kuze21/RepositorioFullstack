@@ -36,7 +36,6 @@ class AdministradorTests {
 	void testFuncion(){
 		# Se puede indicar un valor para suplantar y acotar el resultado que se espera de la funcion.
 		when().thenReturn("");
-
 		# Bloque try/catch permite probar un segmento o funcion y agarrar el error
 		# mockMvc permite consultas HTTPMethod
 		try{
@@ -44,7 +43,6 @@ class AdministradorTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(""))
 		}
-
 		catch(Exception ex){
 		 System.out.println(ex.getMessage());
 		 fail();
@@ -61,12 +59,10 @@ class AdministradorTests {
 					.andExpect(status().isOk())
 					.andExpect(content().string("Lista completa"));
 		}
-
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
 		}
-
 	}
 /*
 	@Test
@@ -77,6 +73,5 @@ class AdministradorTests {
 		assertEquals(359990,prueba.getPrecio());
 	}
 */
-
 
 }

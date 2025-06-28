@@ -51,6 +51,7 @@ class  ProductoTests {
 		}
 	}
 	*/
+
 	@Test
 	@DisplayName("Test listar productos")
 	void testListarProductos(){
@@ -60,7 +61,6 @@ class  ProductoTests {
 					.andExpect(status().isOk())
 					.andExpect(content().string("Lista completa"));
 		}
-
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
@@ -74,8 +74,5 @@ class  ProductoTests {
 		assertNotNull(prueba);
 		assertEquals(359990,prueba.getPrecio());
 	}
-
-
-
 
 }

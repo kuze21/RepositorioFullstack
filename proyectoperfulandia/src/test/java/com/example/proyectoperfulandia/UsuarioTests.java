@@ -40,7 +40,6 @@ class UsuarioTests {
 	void testFuncion(){
 		# Se puede indicar un valor para suplantar y acotar el resultado que se espera de la funcion.
 		when().thenReturn("");
-
 		# Bloque try/catch permite probar un segmento o funcion y agarrar el error
 		# mockMvc permite consultas HTTPMethod
 		try{
@@ -48,7 +47,6 @@ class UsuarioTests {
 			.andExpect(status().isOk())
 			.andExpect(content().string(""))
 		}
-
 		catch(Exception ex){
 		 System.out.println(ex.getMessage());
 		 fail();
@@ -65,7 +63,6 @@ class UsuarioTests {
 					.andExpect(status().isOk())
 					.andExpect(content().string("Lista completa"));
 		}
-
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
@@ -81,7 +78,6 @@ class UsuarioTests {
 					.andExpect(status().isOk())
 					.andExpect(content().string("Valores usuario"));
 		}
-
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
@@ -101,7 +97,6 @@ class UsuarioTests {
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
-
 		}
 	}
 
@@ -119,7 +114,6 @@ class UsuarioTests {
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
-
 		}
 	}
 /*
@@ -131,6 +125,5 @@ class UsuarioTests {
 		assertEquals(359990,prueba.getPrecio());
 	}
 */
-
 
 }
