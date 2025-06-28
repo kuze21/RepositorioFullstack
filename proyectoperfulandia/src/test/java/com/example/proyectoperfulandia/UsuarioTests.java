@@ -88,12 +88,11 @@ class UsuarioTests {
 
 		}
 	}
-// este par de pruebas probablemente no esten bien
+// estos 3 de pruebas probablemente no esten bien
 	@Test
 	@DisplayName("Test agregar usuario")
 	void testAddUsuario(){
 		try {
-
 			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			usuarioServiceMock.addUsuario(prueba);
 			assertNotNull(prueba);
@@ -104,9 +103,25 @@ class UsuarioTests {
 			fail();
 
 		}
-
 	}
 
+	@Test
+	@DisplayName("Test elimar usuario")
+	void testRemoveUsuario(){
+		try {
+			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			usuarioServiceMock.addUsuario(prueba);
+			assertNotNull(prueba);
+			assertNotNull(usuarioRepository.findById(123456789));
+			usuarioRepository.deleteById(123456789);
+			assertNull(usuarioRepository.findById(123456789));
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+
+		}
+	}
 /*
 	@Test
 	@DisplayName("Rectificar precio producto")
