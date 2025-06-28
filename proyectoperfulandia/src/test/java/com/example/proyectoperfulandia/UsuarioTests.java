@@ -1,5 +1,6 @@
 package com.example.proyectoperfulandia;
 
+import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.UsuarioRepository;
 import com.example.proyectoperfulandia.services.UsuarioService;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -29,6 +31,8 @@ class UsuarioTests {
 
 	@Autowired
 	MockMvc mockMvc;
+    @Autowired
+    private MockMvcTester mockMvcTester;
 
 	/*
 	# Estructura @Test
@@ -54,7 +58,7 @@ class UsuarioTests {
 
 	@Test
 	@DisplayName("Test listar todos los usuarios")
-	void testGetUsuarios() throws Exception {
+	void testGetUsuarios(){
 		when(usuarioServiceMock.getUsuarios()).thenReturn("Lista completa");
 		try{
 			mockMvc.perform(get("/usuarios"))
@@ -66,8 +70,43 @@ class UsuarioTests {
 			System.out.println(ex.getMessage());
 			fail();
 		}
+	}
+
+	@Test
+	@DisplayName("Test comprobar usuario")
+	void testGetUsuario(int id){
+		when(usuarioServiceMock.getUsuario(id)).thenReturn("Valores usuario");
+		try{
+			mockMvc.perform(get("/usuario"))
+					.andExpect(status().isOk())
+					.andExpect(content().string("Valores usuario"));
+		}
+
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+
+		}
+	}
+// este par de pruebas probablemente no esten bien
+	@Test
+	@DisplayName("Test agregar usuario")
+	void testAddUsuario(){
+		try {
+
+			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			usuarioServiceMock.addUsuario(prueba);
+			assertNotNull(prueba);
+			assertNotNull(usuarioRepository.findById(123456789));
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+
+		}
 
 	}
+
 /*
 	@Test
 	@DisplayName("Rectificar precio producto")
