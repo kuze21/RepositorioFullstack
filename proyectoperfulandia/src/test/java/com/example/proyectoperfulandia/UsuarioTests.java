@@ -106,8 +106,6 @@ class UsuarioTests {
 		try {
 			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			usuarioServiceMock.addUsuario(prueba);
-			assertNotNull(prueba);
-			assertNotNull(usuarioRepository.findById(123456789));
 			usuarioRepository.deleteById(123456789);
 			assertNull(usuarioRepository.findById(123456789));
 		}
@@ -116,6 +114,25 @@ class UsuarioTests {
 			fail();
 		}
 	}
+
+	@Test
+	@DisplayName("Test actualizar usuario")
+	void testActualizarUsuario(){
+		try {
+			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			Usuario actualizacion = new Usuario(123456788,"11111111-2","Usuario Actualizado",EnumRol.CLIENTE,"actualizado@gmail.com","Claveprueba");
+			usuarioServiceMock.addUsuario(prueba);
+			assertNotNull(usuarioRepository.findById(123456789));
+			usuarioServiceMock.updateUsuario(123456789,actualizacion);
+			assertEquals("Usuario Actualizado",usuarioRepository.findById(123456789).get().getNombre());
+			assertEquals("actualizado@gmail.com",usuarioRepository.findById(123456789).get().getEmail());
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
+	}
+
 /*
 	@Test
 	@DisplayName("Rectificar precio producto")
