@@ -23,10 +23,8 @@ class  ProductoTests {
 
 	@Autowired
 	ProductoRepository productoRepository;
-
 	@MockitoBean
 	ProductoService productoServiceMock;
-
 	@Autowired
 	MockMvc mockMvc;
 

@@ -21,7 +21,7 @@ public class AdministradorService {
             output += "Correo: " + admin.getEmail() + "\n\n";
         }
         if (output.isEmpty()) {
-            return "No se encuentran administradores";
+            return "No se encuentran administradores.";
         } else {
             return output;
         }
@@ -30,7 +30,7 @@ public class AdministradorService {
     // Añadir un usuario ADMIN
     public String addAdmin(Administrador admin){
         administradorRepository.save(admin);
-        return "Administrador agregado con éxito";
+        return "Administrador agregado con éxito.";
     }
 
     // Obtener un usuario ADMIN mediante ID
