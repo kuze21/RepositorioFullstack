@@ -1,6 +1,6 @@
 package com.example.proyectoperfulandia.controller;
 
-import com.example.proyectoperfulandia.assembler.UsuarioModelAssembler;
+
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.services.UsuarioService;
 
@@ -24,9 +24,6 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
-
-    @Autowired
-    private UsuarioModelAssembler usuarioModelAssembler;
 
     // Obtener todos los usuarios
     @GetMapping
