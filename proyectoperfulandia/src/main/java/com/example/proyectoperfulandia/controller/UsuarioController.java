@@ -1,8 +1,9 @@
 package com.example.proyectoperfulandia.controller;
 
-import com.example.proyectoperfulandia.model.Administrador;
+import com.example.proyectoperfulandia.assembler.UsuarioModelAssembler;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.services.UsuarioService;
+
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/usuarios")
+@Tag(name = "Usuario", description = "API REST para administrar todos los usuarios del sistema")
 public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioModelAssembler usuarioModelAssembler;
 
     // Obtener todos los usuarios
     @GetMapping
