@@ -73,7 +73,7 @@ class EmpleadoTests {
 	@DisplayName("Test agregar empleado")
 	void testAddEmpleado(){
 		try {
-			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba", EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba", EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
 			empleadoServiceMock.addEmpleado(prueba);
 			assertNotNull(prueba);
 			assertNotNull(empleadoRepository.findById(123456789));
@@ -88,7 +88,7 @@ class EmpleadoTests {
 	@DisplayName("Test elimar empleado")
 	void testRemoveEmpleado(){
 		try {
-			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
 			empleadoServiceMock.addEmpleado(prueba);
 			empleadoRepository.deleteById(123456789);
 			assertNull(empleadoRepository.findById(123456789));
@@ -103,8 +103,8 @@ class EmpleadoTests {
 	@DisplayName("Test actualizar empleado")
 	void testUpdateEmpleado(){
 		try {
-			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
-			Empleado actualizacion = new Empleado(123456788,"11111111-2","Empleado Actualizado",EnumRol.CLIENTE,"actualizado@gmail.com","Claveprueba");
+			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
+			Empleado actualizacion = new Empleado(123456788,"11111111-2","Empleado Actualizado",EnumRol.EMPLEADO,"actualizado@gmail.com","Claveprueba");
 			empleadoServiceMock.addEmpleado(prueba);
 			assertNotNull(empleadoRepository.findById(123456789));
 			empleadoServiceMock.updateEmpleado(123456789,actualizacion);
