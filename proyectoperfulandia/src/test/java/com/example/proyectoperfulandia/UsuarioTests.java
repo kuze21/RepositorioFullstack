@@ -117,7 +117,7 @@ class UsuarioTests {
 
 	@Test
 	@DisplayName("Test actualizar usuario")
-	void testActualizarUsuario(){
+	void testUpdateUsuario(){
 		try {
 			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			Usuario actualizacion = new Usuario(123456788,"11111111-2","Usuario Actualizado",EnumRol.CLIENTE,"actualizado@gmail.com","Claveprueba");
