@@ -52,7 +52,6 @@ class UsuarioTests {
 		 fail();
 		}
 	}
-	*/
 
 	@Test
 	@DisplayName("Test listar todos los usuarios")
@@ -133,7 +132,6 @@ class UsuarioTests {
 		}
 	}
 
-/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){
