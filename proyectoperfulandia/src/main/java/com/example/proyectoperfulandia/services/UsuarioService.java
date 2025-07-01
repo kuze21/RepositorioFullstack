@@ -5,6 +5,9 @@ import com.example.proyectoperfulandia.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UsuarioService {
 
@@ -12,67 +15,41 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     // Añadir un usuario
-    public String addUsuario(Usuario usuario) {
-        usuarioRepository.save(usuario);
-        return "Agregado con éxito";
+    public void addUsuario(Usuario user) {
+        usuarioRepository.save(user);
     }
 
     // Obtener todos los usuarios
-    public String getUsuarios() {
-        String output = "";
-        for (Usuario usuario : usuarioRepository.findAll()) {
-            output += "ID: " + usuario.getId() + "\n";
-            output += "Nombre: " + usuario.getNombre() + "\n";
-            output += "Rol: " + usuario.getRol() + "\n";
-            output += "Correo: " + usuario.getEmail() + "\n";
-        }
-        if (output.isEmpty()) {
-            return "No se encuentran usuarios";
-        } else {
-            return output;
-        }
-
+    public List<Usuario> getUsuarios() {
+        return usuarioRepository.findAll();
     }
 
     // Obtener un usuario mediante ID
-    public String getUsuario(int id) {
-        String output = "";
-        if (usuarioRepository.existsById(id)) {
-            Usuario user = usuarioRepository.findById(id).get();
-            output += "ID: " + user.getId() + "\n";
-            output += "Nombre: " + user.getNombre() + "\n";
-            output += "Rol: " + user.getRol() + "\n";
-            output += "Correo: " + user.getEmail() + "\n\n";
-            return output;
-        } else {
-            return "No se encontraron usuarios.";
-        }
+    public Optional<Usuario> getUsuario(int id) {
+        return usuarioRepository.findById(id);
     }
+
     // Eliminar un usuario mediante ID
-    public String removeUsuario(int id) {
-        if (usuarioRepository.existsById(id)) {
-            usuarioRepository.deleteById(id);
-            return "Usuario eliminado correctamente.";
-        } else {
-            return "No se encontraron usuarios.";
-        }
+    public void removeUsuario(int id) {
+        usuarioRepository.deleteById(id);
+    }
+    public boolean existsById(int id) {
+        return usuarioRepository.existsById(id);
     }
 
     // Actualizar un usuario mediante ID
-    public String updateUsuario(int id, Usuario usuario) {
-        if (usuarioRepository.existsById(id)) {
-            Usuario usuarioActual = usuarioRepository.findById(id).get();
-            usuarioActual.setNombre(usuario.getNombre());
-            usuarioActual.setEmail(usuario.getEmail());
-            usuarioRepository.save(usuarioActual);
-            return "Usuario actualizado correctamente.";
-        } else {
-            return "No se encontraron usuarios.";
-        }
+    public void updateUsuario(int id, Usuario user) {
+        Usuario us = usuarioRepository.findById(id).get();
+        us.setRut(user.getRut());
+        us.setNombre(user.getNombre());
+        us.setEmail(user.getEmail());
+        us.setPassword(user.getPassword());
+        us.setRol(user.getRol());
+        usuarioRepository.save(us);
     }
+
     // Auntenticar un usuario mediante correo y contraseña
     public Usuario autenticarUsuario(String email, String password) {
         return usuarioRepository.findByEmailAndPassword(email, password).orElse(null);
     }
-
 }
