@@ -48,7 +48,6 @@ class ClienteTests {
 		 fail();
 		}
 	}
-	*/
 
 	@Test
 	@DisplayName("Test listar todos los clientes")
@@ -66,7 +65,6 @@ class ClienteTests {
 		}
 	}
 
-/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){

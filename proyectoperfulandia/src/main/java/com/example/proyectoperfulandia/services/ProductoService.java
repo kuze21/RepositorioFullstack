@@ -5,74 +5,45 @@ import com.example.proyectoperfulandia.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProductoService {
 
     @Autowired
     ProductoRepository productoRepository;
 
-    // Añadir producto
-    public String agregarProducto(Producto producto) {
-        productoRepository.save(producto);
-        return "Producto agregado correctamente.";
+    // Obtener todos los productos
+    public List<Producto> getProductos() {
+        return productoRepository.findAll();
     }
 
-    // Obtener todos los productos
-    public String listarProducto() {
-        String output = "";
-        for (Producto producto : productoRepository.findAll()) {
-            output += "ID Producto: "+ producto.getId() + "\n";
-            output += "Nombre: "+ producto.getNombre() + "\n";
-            output += "Categoría: "+ producto.getCategoria() + "\n";
-            output += "Precio: $"+ producto.getPrecio() + "\n";
-            output += "Stock: "+ producto.getStock() + "\n";
-        }
-        if (output.isEmpty()){
-            return "No se encontraron productos.";
-        } else {
-            return output;
-        }
+    // Añadir un producto
+    public void addProducto(Producto user) {
+        productoRepository.save(user);
     }
 
     // Obtiene los productos y sus datos mediante ID
-    public String obtenerProductoID(int id) {
-        String output = "";
-        if (productoRepository.existsById(id)) {
-            Producto producto = productoRepository.findById(id).get();
-            output += "ID Producto: "+ producto.getId() + "\n";
-            output += "Nombre: "+ producto.getNombre() + "\n";
-            output += "Categoría: "+ producto.getCategoria() + "\n";
-            output += "Precio: $"+ producto.getPrecio() + "\n";
-            output += "Stock: "+ producto.getStock() + "\n";
-            return output;
-        } else {
-            return "No se encontraron productos.";
-        }
+    public Optional<Producto> getProducto(int id) {
+        return productoRepository.findById(id);
     }
 
-    // Elimina los productos y sus datos mediante ID
-    public String eliminarProducto(int id) {
-        if (productoRepository.existsById(id)) {
-            productoRepository.deleteById(id);
-            return "Producto eliminado correctamente.";
-        } else {
-            return "No se encontraron productos.";
-        }
+    // Elimina los productos mediante ID
+    public void removeProducto(int id) {
+        productoRepository.deleteById(id);
+    }
+    public boolean existsById(int id) {
+        return productoRepository.existsById(id);
     }
 
     // Actualiza los productos y sus datos mediante ID
-    public String actualizarProducto(int id, Producto producto) {
-        if (productoRepository.existsById(id)) {
-            Producto productoActual = productoRepository.findById(id).get();
-            productoActual.setNombre(producto.getNombre());
-            productoActual.setCategoria(producto.getCategoria());
-            productoActual.setPrecio(producto.getPrecio());
-            productoActual.setStock(producto.getStock());
-            productoRepository.save(productoActual);
-            return "Producto actualizado correctamente.";
-        } else {
-            return "No se encontraron productos.";
-        }
+    public void updateProducto(int id, Producto producto) {
+        Producto us = productoRepository.findById(id).get();
+        us.setNombre(producto.getNombre());
+        us.setPrecio(producto.getPrecio());
+        us.setStock(producto.getStock());
+        us.setCategoria(producto.getCategoria());
+        productoRepository.save(us);
     }
-
 }

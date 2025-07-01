@@ -26,7 +26,7 @@ class  ProductoTests {
 	@MockitoBean
 	ProductoService productoServiceMock;
 	@Autowired
-	MockMvc mockMvc;
+	MockMvc mockMvc;}
 
 	/*
 	# Estructura @Test
@@ -48,7 +48,6 @@ class  ProductoTests {
 		 fail();
 		}
 	}
-	*/
 
 	@Test
 	@DisplayName("Test listar productos")
@@ -74,3 +73,5 @@ class  ProductoTests {
 	}
 
 }
+
+*/

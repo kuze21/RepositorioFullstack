@@ -50,7 +50,6 @@ class EmpleadoTests {
 		 fail();
 		}
 	}
-	*/
 
 	@Test
 	@DisplayName("Test listar todos los empleados")
@@ -67,7 +66,6 @@ class EmpleadoTests {
 		}
 	}
 
-/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){

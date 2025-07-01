@@ -16,7 +16,6 @@ public class Producto {
     // Generación automática de IDs
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(unique = true, length = 10, nullable = false)
     private int id;
 

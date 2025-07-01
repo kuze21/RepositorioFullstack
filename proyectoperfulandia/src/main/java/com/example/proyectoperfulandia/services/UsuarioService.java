@@ -33,7 +33,6 @@ public class UsuarioService {
     public void removeUsuario(int id) {
         usuarioRepository.deleteById(id);
     }
-
     public boolean existsById(int id) {
         return usuarioRepository.existsById(id);
     }

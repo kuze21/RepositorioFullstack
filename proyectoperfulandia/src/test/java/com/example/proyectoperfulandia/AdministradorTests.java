@@ -48,7 +48,7 @@ class AdministradorTests {
 		 fail();
 		}
 	}
-	*/
+
 
 	@Test
 	@DisplayName("Test listar todos los administradores")
@@ -64,7 +64,7 @@ class AdministradorTests {
 			fail();
 		}
 	}
-/*
+
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){

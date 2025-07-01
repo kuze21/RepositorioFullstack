@@ -99,8 +99,7 @@ public class UsuarioController {
         usuarioService.removeUsuario(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
+    
     // Actualizar un usuario mediante ID
     @PutMapping("/{id}")
     @Operation(summary = "Actualizar datos de un usuario")
