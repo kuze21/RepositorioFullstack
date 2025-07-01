@@ -1,6 +1,8 @@
 package com.example.proyectoperfulandia;
 
 import com.example.proyectoperfulandia.model.Empleado;
+import com.example.proyectoperfulandia.model.EnumRol;
+import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.EmpleadoRepository;
 import com.example.proyectoperfulandia.services.EmpleadoService;
 import org.junit.jupiter.api.DisplayName;
@@ -50,6 +52,7 @@ class EmpleadoTests {
 		 fail();
 		}
 	}
+	*/
 
 	@Test
 	@DisplayName("Test listar todos los empleados")
@@ -66,6 +69,55 @@ class EmpleadoTests {
 		}
 	}
 
+	@Test
+	@DisplayName("Test agregar empleado")
+	void testAddEmpleado(){
+		try {
+			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba", EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
+			empleadoServiceMock.addEmpleado(prueba);
+			assertNotNull(prueba);
+			assertNotNull(empleadoRepository.findById(123456789));
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
+	}
+
+	@Test
+	@DisplayName("Test elimar empleado")
+	void testRemoveEmpleado(){
+		try {
+			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
+			empleadoServiceMock.addEmpleado(prueba);
+			empleadoRepository.deleteById(123456789);
+			assertNull(empleadoRepository.findById(123456789));
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
+	}
+
+	@Test
+	@DisplayName("Test actualizar empleado")
+	void testUpdateEmpleado(){
+		try {
+			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
+			Empleado actualizacion = new Empleado(123456788,"11111111-2","Empleado Actualizado",EnumRol.EMPLEADO,"actualizado@gmail.com","Claveprueba");
+			empleadoServiceMock.addEmpleado(prueba);
+			assertNotNull(empleadoRepository.findById(123456789));
+			empleadoServiceMock.updateEmpleado(123456789,actualizacion);
+			assertEquals("Empleado Actualizado",empleadoRepository.findById(123456789).get().getNombre());
+			assertEquals("actualizado@gmail.com",empleadoRepository.findById(123456789).get().getEmail());
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
+	}
+
+/*
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProduct(){
