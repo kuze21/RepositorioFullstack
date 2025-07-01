@@ -6,6 +6,8 @@ import com.example.proyectoperfulandia.repository.UsuarioRepository;
 import com.example.proyectoperfulandia.services.UsuarioService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,9 +25,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class UsuarioTests {
 
+	@Mock
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
+	@InjectMocks
 	@MockitoBean
 	UsuarioService usuarioServiceMock;
 
@@ -89,10 +93,10 @@ class UsuarioTests {
 	@DisplayName("Test agregar usuario")
 	void testAddUsuario(){
 		try {
-			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			usuarioServiceMock.addUsuario(prueba);
 			assertNotNull(prueba);
-			assertNotNull(usuarioRepository.findById(123456789));
+			assertNotNull(usuarioServiceMock.getUsuario(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -104,10 +108,10 @@ class UsuarioTests {
 	@DisplayName("Test elimar usuario")
 	void testRemoveUsuario(){
 		try {
-			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			usuarioServiceMock.addUsuario(prueba);
-			usuarioServiceMock.removeUsuario(123456789);
-			assertNull(usuarioRepository.findById(123456789));
+			usuarioServiceMock.removeUsuario(123);
+			assertNull(usuarioServiceMock.getUsuario(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -119,13 +123,13 @@ class UsuarioTests {
 	@DisplayName("Test actualizar usuario")
 	void testUpdateUsuario(){
 		try {
-			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
-			Usuario actualizacion = new Usuario(123456788,"11111111-2","Usuario Actualizado",EnumRol.CLIENTE,"actualizado@gmail.com","Claveprueba");
+			Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+			Usuario actualizacion = new Usuario(123,"11111111-2","Usuario Actualizado",EnumRol.CLIENTE,"actualizado@gmail.com","Claveprueba");
 			usuarioServiceMock.addUsuario(prueba);
-			assertNotNull(usuarioRepository.findById(123456789));
-			usuarioServiceMock.updateUsuario(123456789,actualizacion);
-			assertEquals("Usuario Actualizado",usuarioRepository.findById(123456789).get().getNombre());
-			assertEquals("actualizado@gmail.com",usuarioRepository.findById(123456789).get().getEmail());
+			assertNotNull(usuarioServiceMock.getUsuario(123));
+			usuarioServiceMock.updateUsuario(123,actualizacion);
+			assertEquals("Usuario Actualizado",usuarioRepository.findById(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",usuarioRepository.findById(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());

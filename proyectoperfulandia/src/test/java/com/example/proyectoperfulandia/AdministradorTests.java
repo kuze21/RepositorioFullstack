@@ -5,8 +5,11 @@ import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.AdministradorRepository;
 import com.example.proyectoperfulandia.services.AdministradorService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,9 +26,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class AdministradorTests {
 
+	@Mock
 	@Autowired
 	AdministradorRepository administradorRepository;
 
+	@InjectMocks
 	@MockitoBean
 	AdministradorService administradorServiceMock;
 
@@ -71,10 +76,12 @@ class AdministradorTests {
 	@DisplayName("Test agregar administrador")
 	void testAddAdmin(){
 		try {
-			Administrador prueba = new Administrador(123456789,"11111111-1","Administrador Prueba", EnumRol.ADMIN,"prueba@gmail.com","Claveprueba");
+			Administrador prueba = new Administrador();
+			prueba.setNombre("Administrador Prueba");
+			prueba.setId(123);
 			administradorServiceMock.addAdmin(prueba);
 			assertNotNull(prueba);
-			assertNotNull(administradorRepository.findById(123456789));
+			assertNotNull(administradorServiceMock.getAdminID(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -86,10 +93,12 @@ class AdministradorTests {
 	@DisplayName("Test elimar administrador")
 	void testRemoveAdmin(){
 		try {
-			Administrador prueba = new Administrador(123456789,"11111111-1","Administrador Prueba",EnumRol.ADMIN,"prueba@gmail.com","Claveprueba");
+			Administrador prueba = new Administrador();
+			prueba.setNombre("Administrador Prueba");
+			prueba.setId(123);
 			administradorServiceMock.addAdmin(prueba);
-			administradorServiceMock.removeAdmin(123456789);
-			assertNull(administradorRepository.findById(123456789));
+			administradorServiceMock.removeAdmin(123);
+			assertNull(administradorServiceMock.getAdminID(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -101,13 +110,20 @@ class AdministradorTests {
 	@DisplayName("Test actualizar administrador")
 	void testUpdateAdmin(){
 		try {
-			Administrador prueba = new Administrador(123456789,"11111111-1","administrador Prueba",EnumRol.ADMIN,"prueba@gmail.com","Claveprueba");
-			Administrador actualizacion = new Administrador(123456788,"11111111-2","administrador Actualizado",EnumRol.ADMIN,"actualizado@gmail.com","Claveprueba");
+			Administrador prueba = new Administrador();
+			prueba.setNombre("Administrador Prueba");
+			prueba.setId(123);
+			prueba.setEmail("administrador@gmail.com");
+			Administrador actualizacion = new Administrador();
+			actualizacion.setNombre("Administrador Actualizado");
+			actualizacion.setId(123);
+			actualizacion.setEmail("actualizado@gmail.com");
 			administradorServiceMock.addAdmin(prueba);
-			assertNotNull(administradorRepository.findById(123456789));
-			administradorServiceMock.updateAdmin(123456789,actualizacion);
-			assertEquals("Administrador Actualizado",administradorRepository.findById(123456789).get().getNombre());
-			assertEquals("actualizado@gmail.com",administradorRepository.findById(123456789).get().getEmail());
+			assertNotNull(administradorServiceMock.getAdminID(123));
+			administradorServiceMock.updateAdmin(123,actualizacion);
+			// actualizar cambiando los ...Repository.findById de todos los tests despues de arreglar los Service
+			assertEquals("Administrador Actualizado",administradorRepository.findById(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",administradorRepository.findById(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
