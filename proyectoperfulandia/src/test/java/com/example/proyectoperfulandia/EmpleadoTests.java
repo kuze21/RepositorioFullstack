@@ -90,7 +90,7 @@ class EmpleadoTests {
 		try {
 			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
 			empleadoServiceMock.addEmpleado(prueba);
-			empleadoRepository.deleteById(123456789);
+			empleadoServiceMock.removeEmpleado(123456789);
 			assertNull(empleadoRepository.findById(123456789));
 		}
 		catch(Exception ex){

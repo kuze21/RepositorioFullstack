@@ -89,7 +89,7 @@ class ClienteTests {
 		try {
 			Cliente prueba = new Cliente(123456789,"11111111-1","Cliente Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			clienteServiceMock.addCliente(prueba);
-			clienteRepository.deleteById(123456789);
+			clienteServiceMock.removeCliente(123456789);
 			assertNull(clienteRepository.findById(123456789));
 		}
 		catch(Exception ex){

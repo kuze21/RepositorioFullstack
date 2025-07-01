@@ -106,7 +106,7 @@ class UsuarioTests {
 		try {
 			Usuario prueba = new Usuario(123456789,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 			usuarioServiceMock.addUsuario(prueba);
-			usuarioRepository.deleteById(123456789);
+			usuarioServiceMock.removeUsuario(123456789);
 			assertNull(usuarioRepository.findById(123456789));
 		}
 		catch(Exception ex){

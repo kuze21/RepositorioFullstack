@@ -88,7 +88,7 @@ class AdministradorTests {
 		try {
 			Administrador prueba = new Administrador(123456789,"11111111-1","Administrador Prueba",EnumRol.ADMIN,"prueba@gmail.com","Claveprueba");
 			administradorServiceMock.addAdmin(prueba);
-			administradorRepository.deleteById(123456789);
+			administradorServiceMock.removeAdmin(123456789);
 			assertNull(administradorRepository.findById(123456789));
 		}
 		catch(Exception ex){
