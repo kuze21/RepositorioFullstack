@@ -2,7 +2,6 @@ package com.example.proyectoperfulandia;
 
 import com.example.proyectoperfulandia.model.Administrador;
 import com.example.proyectoperfulandia.model.EnumRol;
-import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.AdministradorRepository;
 import com.example.proyectoperfulandia.services.AdministradorService;
 import org.junit.jupiter.api.DisplayName;
@@ -14,6 +13,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -59,7 +61,23 @@ class AdministradorTests {
 	@Test
 	@DisplayName("Test listar todos los administradores")
 	void testGetAdmins(){
-		when(administradorServiceMock.getAdmins()).thenReturn("Lista completa");
+		Administrador prueba1 = new Administrador();
+		prueba1.setId(123);
+		prueba1.setNombre("Administrador Prueba");
+		prueba1.setEmail("admin@test.com");
+		prueba1.setRut("12345678-9");
+		prueba1.setPassword("password123");
+		prueba1.setRol(EnumRol.ADMIN);
+
+		Administrador prueba2 = new Administrador();
+		prueba2.setId(124);
+		prueba2.setNombre("Gerente Prueba");
+		prueba2.setEmail("gerente@test.com");
+		prueba2.setRut("98765432-1");
+		prueba2.setPassword("password456");
+		prueba2.setRol(EnumRol.GERENTE);
+		List<Administrador> admins = Arrays.asList(prueba1, prueba2);
+		when(administradorServiceMock.getAdmins()).thenReturn(admins);
 		try{
 			mockMvc.perform(get("/administradores"))
 					.andExpect(status().isOk())

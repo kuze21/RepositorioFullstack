@@ -1,5 +1,6 @@
 package com.example.proyectoperfulandia;
 
+import com.example.proyectoperfulandia.model.Empleado;
 import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.UsuarioRepository;
@@ -14,6 +15,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -61,7 +65,21 @@ class UsuarioTests {
 	@Test
 	@DisplayName("Test listar todos los usuarios")
 	void testGetUsuarios(){
-		when(usuarioServiceMock.getUsuarios()).thenReturn("Lista completa");
+		Usuario prueba1 = new Usuario();
+		prueba1.setId(123);
+		prueba1.setNombre("Usuario Prueba 1");
+		prueba1.setEmail("usuario@test.com");
+		prueba1.setRut("12345678-9");
+		prueba1.setPassword("password123");
+
+		Usuario prueba2 = new Usuario();
+		prueba2.setId(124);
+		prueba2.setNombre("Usuario Prueba 2");
+		prueba2.setEmail("usuario@test.com");
+		prueba2.setRut("98765432-1");
+		prueba2.setPassword("password456");
+		List<Usuario> usuarios = Arrays.asList(prueba1, prueba2);
+		when(usuarioServiceMock.getUsuarios()).thenReturn(usuarios);
 		try{
 			mockMvc.perform(get("/usuarios"))
 					.andExpect(status().isOk())
@@ -78,7 +96,7 @@ class UsuarioTests {
 	void testGetUsuario(){
 		Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 		usuarioServiceMock.addUsuario(prueba);
-		when(usuarioServiceMock.getUsuario(123)).thenReturn("Valores usuario");
+		when(usuarioServiceMock.getUsuario(123)).thenReturn(prueba);
 		try{
 			mockMvc.perform(get("/usuario"))
 					.andExpect(status().isOk())

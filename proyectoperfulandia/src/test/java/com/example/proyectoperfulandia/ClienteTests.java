@@ -1,5 +1,6 @@
 package com.example.proyectoperfulandia;
 
+import com.example.proyectoperfulandia.model.Administrador;
 import com.example.proyectoperfulandia.model.Cliente;
 import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Usuario;
@@ -14,6 +15,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -59,7 +63,23 @@ class ClienteTests {
 	@Test
 	@DisplayName("Test listar todos los clientes")
 	void testGetClientes(){
-		when(clienteServiceMock.getClientes()).thenReturn("Lista completa");
+		Cliente prueba1 = new Cliente();
+		prueba1.setId(123);
+		prueba1.setNombre("Cliente Prueba 1");
+		prueba1.setEmail("cliente@test.com");
+		prueba1.setRut("12345678-9");
+		prueba1.setPassword("password123");
+		prueba1.setRol(EnumRol.CLIENTE);
+
+		Cliente prueba2 = new Cliente();
+		prueba2.setId(124);
+		prueba2.setNombre("Cliente Prueba 2");
+		prueba2.setEmail("cliente@test.com");
+		prueba2.setRut("98765432-1");
+		prueba2.setPassword("password456");
+		prueba2.setRol(EnumRol.CLIENTE);
+		List<Cliente> clientes = Arrays.asList(prueba1, prueba2);
+		when(clienteServiceMock.getClientes()).thenReturn(clientes);
 		try{
 			mockMvc.perform(get("/clientes"))
 					.andExpect(status().isOk())

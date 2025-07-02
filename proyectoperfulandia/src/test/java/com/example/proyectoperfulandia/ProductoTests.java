@@ -1,5 +1,7 @@
 package com.example.proyectoperfulandia;
 
+import com.example.proyectoperfulandia.model.Empleado;
+import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Producto;
 import com.example.proyectoperfulandia.repository.ProductoRepository;
 import com.example.proyectoperfulandia.services.ProductoService;
@@ -12,6 +14,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -58,7 +63,11 @@ class  ProductoTests {
 	@Test
 	@DisplayName("Test listar productos")
 	void testGetProductos(){
-		when(productoServiceMock.getProductos()).thenReturn("Lista completa");
+		Producto prueba1 = new Producto();
+
+		Producto prueba2 = new Producto();
+		List<Producto> productos = Arrays.asList(prueba1, prueba2);
+		when(productoServiceMock.getProductos()).thenReturn(productos);
 		try{
 			mockMvc.perform(get("/productos"))
 					.andExpect(status().isOk())
