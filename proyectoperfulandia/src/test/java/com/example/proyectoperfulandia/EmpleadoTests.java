@@ -82,7 +82,7 @@ class EmpleadoTests {
 			prueba.setId(123);
 			empleadoServiceMock.addEmpleado(prueba);
 			assertNotNull(prueba);
-			assertNotNull(empleadoServiceMock.getEmpleadoID(123));
+			assertNotNull(empleadoServiceMock.getEmpleado(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -99,7 +99,7 @@ class EmpleadoTests {
 			prueba.setId(123);
 			empleadoServiceMock.addEmpleado(prueba);
 			empleadoServiceMock.removeEmpleado(123);
-			assertNull(empleadoServiceMock.getEmpleadoID(123));
+			assertNull(empleadoServiceMock.getEmpleado(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -120,10 +120,10 @@ class EmpleadoTests {
 			actualizacion.setId(123);
 			actualizacion.setEmail("actualizado@gmail.com");
 			empleadoServiceMock.addEmpleado(prueba);
-			assertNotNull(empleadoServiceMock.getEmpleadoID(123));
+			assertNotNull(empleadoServiceMock.getEmpleado(123));
 			empleadoServiceMock.updateEmpleado(123,actualizacion);
-			assertEquals("Empleado Actualizado",empleadoRepository.findById(123).get().getNombre());
-			assertEquals("actualizado@gmail.com",empleadoRepository.findById(123).get().getEmail());
+			assertEquals("Empleado Actualizado",empleadoServiceMock.getEmpleado(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",empleadoServiceMock.getEmpleado(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());

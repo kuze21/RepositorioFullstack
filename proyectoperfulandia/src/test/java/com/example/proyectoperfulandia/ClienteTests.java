@@ -81,7 +81,7 @@ class ClienteTests {
 			prueba.setId(123);
 			clienteServiceMock.addCliente(prueba);
 			assertNotNull(prueba);
-			assertNotNull(clienteServiceMock.getClienteID(123));
+			assertNotNull(clienteServiceMock.getCliente(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -98,7 +98,7 @@ class ClienteTests {
 			prueba.setId(123);
 			clienteServiceMock.addCliente(prueba);
 			clienteServiceMock.removeCliente(123);
-			assertNull(clienteServiceMock.getClienteID(123));
+			assertNull(clienteServiceMock.getCliente(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -119,10 +119,10 @@ class ClienteTests {
 			actualizacion.setId(123);
 			actualizacion.setEmail("actualizado@gmail.com");
 			clienteServiceMock.addCliente(prueba);
-			assertNotNull(clienteServiceMock.getClienteID(123));
+			assertNotNull(clienteServiceMock.getCliente(123));
 			clienteServiceMock.updateCliente(123,actualizacion);
-			assertEquals("Cliente Actualizado",clienteRepository.findById(123).get().getNombre());
-			assertEquals("actualizado@gmail.com",clienteRepository.findById(123).get().getEmail());
+			assertEquals("Cliente Actualizado",clienteServiceMock.getCliente(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",clienteServiceMock.getCliente(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());

@@ -80,7 +80,7 @@ class AdministradorTests {
 			prueba.setId(123);
 			administradorServiceMock.addAdmin(prueba);
 			assertNotNull(prueba);
-			assertNotNull(administradorServiceMock.getAdminID(123));
+			assertNotNull(administradorServiceMock.getAdmin(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -97,7 +97,7 @@ class AdministradorTests {
 			prueba.setId(123);
 			administradorServiceMock.addAdmin(prueba);
 			administradorServiceMock.removeAdmin(123);
-			assertNull(administradorServiceMock.getAdminID(123));
+			assertNull(administradorServiceMock.getAdmin(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -118,11 +118,10 @@ class AdministradorTests {
 			actualizacion.setId(123);
 			actualizacion.setEmail("actualizado@gmail.com");
 			administradorServiceMock.addAdmin(prueba);
-			assertNotNull(administradorServiceMock.getAdminID(123));
+			assertNotNull(administradorServiceMock.getAdmin(123));
 			administradorServiceMock.updateAdmin(123,actualizacion);
-			// actualizar cambiando los ...Repository.findById de todos los tests despues de arreglar los Service
-			assertEquals("Administrador Actualizado",administradorRepository.findById(123).get().getNombre());
-			assertEquals("actualizado@gmail.com",administradorRepository.findById(123).get().getEmail());
+			assertEquals("Administrador Actualizado",administradorServiceMock.getAdmin(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",administradorServiceMock.getAdmin(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());

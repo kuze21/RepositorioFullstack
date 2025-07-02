@@ -57,8 +57,8 @@ class  ProductoTests {
 
 	@Test
 	@DisplayName("Test listar productos")
-	void testListarProductos(){
-		when(productoServiceMock.listarProducto()).thenReturn("Lista completa");
+	void testGetProductos(){
+		when(productoServiceMock.getProductos()).thenReturn("Lista completa");
 		try{
 			mockMvc.perform(get("/productos"))
 					.andExpect(status().isOk())
@@ -83,11 +83,11 @@ class  ProductoTests {
 	void testAddProducto(){
 		try {
 			Producto prueba = new Producto();
-			productoServiceMock.agregarProducto(prueba);
+			productoServiceMock.addProducto(prueba);
 			prueba.setNombre("Producto Prueba");
 			prueba.setId(123);
 			assertNotNull(prueba);
-			assertNotNull(productoServiceMock.obtenerProductoID(123));
+			assertNotNull(productoServiceMock.getProducto(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -100,11 +100,11 @@ class  ProductoTests {
 	void testRemoveProducto(){
 		try {
 			Producto prueba = new Producto();
-			productoServiceMock.agregarProducto(prueba);
+			productoServiceMock.addProducto(prueba);
 			prueba.setNombre("Producto Prueba");
 			prueba.setId(123);
-			productoServiceMock.eliminarProducto(123);
-			assertNull(productoServiceMock.obtenerProductoID(123));
+			productoServiceMock.removeProducto(123);
+			assertNull(productoServiceMock.getProducto(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -122,10 +122,10 @@ class  ProductoTests {
 			Producto actualizacion = new Producto();
 			actualizacion.setNombre("Producto Actualizado");
 			actualizacion.setId(123);
-			productoServiceMock.agregarProducto(prueba);
-			assertNotNull(productoServiceMock.obtenerProductoID(123));
-			productoServiceMock.actualizarProducto(123,actualizacion);
-			assertEquals("Producto Actualizado",productoRepository.findById(123).get().getNombre());
+			productoServiceMock.addProducto(prueba);
+			assertNotNull(productoServiceMock.getProducto(123));
+			productoServiceMock.updateProducto(123,actualizacion);
+			assertEquals("Producto Actualizado",productoServiceMock.getProducto(123).get().getNombre());
 
 		}
 		catch(Exception ex){

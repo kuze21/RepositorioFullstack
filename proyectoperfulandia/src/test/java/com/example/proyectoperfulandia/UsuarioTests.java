@@ -75,8 +75,10 @@ class UsuarioTests {
 
 	@Test
 	@DisplayName("Test comprobar usuario")
-	void testGetUsuario(int id){
-		when(usuarioServiceMock.getUsuario(id)).thenReturn("Valores usuario");
+	void testGetUsuario(){
+		Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
+		usuarioServiceMock.addUsuario(prueba);
+		when(usuarioServiceMock.getUsuario(123)).thenReturn("Valores usuario");
 		try{
 			mockMvc.perform(get("/usuario"))
 					.andExpect(status().isOk())
@@ -128,8 +130,8 @@ class UsuarioTests {
 			usuarioServiceMock.addUsuario(prueba);
 			assertNotNull(usuarioServiceMock.getUsuario(123));
 			usuarioServiceMock.updateUsuario(123,actualizacion);
-			assertEquals("Usuario Actualizado",usuarioRepository.findById(123).get().getNombre());
-			assertEquals("actualizado@gmail.com",usuarioRepository.findById(123).get().getEmail());
+			assertEquals("Usuario Actualizado",usuarioServiceMock.getUsuario(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",usuarioServiceMock.getUsuario(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
