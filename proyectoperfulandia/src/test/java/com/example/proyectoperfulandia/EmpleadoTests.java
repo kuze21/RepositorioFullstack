@@ -7,6 +7,8 @@ import com.example.proyectoperfulandia.repository.EmpleadoRepository;
 import com.example.proyectoperfulandia.services.EmpleadoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,9 +25,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class EmpleadoTests {
 
+	@Mock
 	@Autowired
 	EmpleadoRepository empleadoRepository;
 
+	@InjectMocks
 	@MockitoBean
 	EmpleadoService empleadoServiceMock;
 
@@ -73,10 +77,12 @@ class EmpleadoTests {
 	@DisplayName("Test agregar empleado")
 	void testAddEmpleado(){
 		try {
-			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba", EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
+			Empleado prueba = new Empleado();
+			prueba.setNombre("Empleado Prueba");
+			prueba.setId(123);
 			empleadoServiceMock.addEmpleado(prueba);
 			assertNotNull(prueba);
-			assertNotNull(empleadoRepository.findById(123456789));
+			assertNotNull(empleadoServiceMock.getEmpleadoID(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -88,10 +94,12 @@ class EmpleadoTests {
 	@DisplayName("Test elimar empleado")
 	void testRemoveEmpleado(){
 		try {
-			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
+			Empleado prueba = new Empleado();
+			prueba.setNombre("Empleado Prueba");
+			prueba.setId(123);
 			empleadoServiceMock.addEmpleado(prueba);
-			empleadoRepository.deleteById(123456789);
-			assertNull(empleadoRepository.findById(123456789));
+			empleadoServiceMock.removeEmpleado(123);
+			assertNull(empleadoServiceMock.getEmpleadoID(123));
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
@@ -103,28 +111,24 @@ class EmpleadoTests {
 	@DisplayName("Test actualizar empleado")
 	void testUpdateEmpleado(){
 		try {
-			Empleado prueba = new Empleado(123456789,"11111111-1","Empleado Prueba",EnumRol.EMPLEADO,"prueba@gmail.com","Claveprueba");
-			Empleado actualizacion = new Empleado(123456788,"11111111-2","Empleado Actualizado",EnumRol.EMPLEADO,"actualizado@gmail.com","Claveprueba");
+			Empleado prueba = new Empleado();
+			prueba.setNombre("Empleado Prueba");
+			prueba.setId(123);
+			prueba.setEmail("empleado@gmail.com");
+			Empleado actualizacion = new Empleado();
+			actualizacion.setNombre("Empleado Actualizado");
+			actualizacion.setId(123);
+			actualizacion.setEmail("actualizado@gmail.com");
 			empleadoServiceMock.addEmpleado(prueba);
-			assertNotNull(empleadoRepository.findById(123456789));
-			empleadoServiceMock.updateEmpleado(123456789,actualizacion);
-			assertEquals("Empleado Actualizado",empleadoRepository.findById(123456789).get().getNombre());
-			assertEquals("actualizado@gmail.com",empleadoRepository.findById(123456789).get().getEmail());
+			assertNotNull(empleadoServiceMock.getEmpleadoID(123));
+			empleadoServiceMock.updateEmpleado(123,actualizacion);
+			assertEquals("Empleado Actualizado",empleadoRepository.findById(123).get().getNombre());
+			assertEquals("actualizado@gmail.com",empleadoRepository.findById(123).get().getEmail());
 		}
 		catch(Exception ex){
 			System.out.println(ex.getMessage());
 			fail();
 		}
 	}
-
-/*
-	@Test
-	@DisplayName("Rectificar precio producto")
-	void testFindProduct(){
-		Producto prueba = productoRepository.findById(1).get();
-		assertNotNull(prueba);
-		assertEquals(359990,prueba.getPrecio());
-	}
-*/
 
 }

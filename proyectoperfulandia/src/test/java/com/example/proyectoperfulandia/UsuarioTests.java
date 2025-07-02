@@ -35,8 +35,8 @@ class UsuarioTests {
 
 	@Autowired
 	MockMvc mockMvc;
-    @Autowired
-    private MockMvcTester mockMvcTester;
+	@Autowired
+	private MockMvcTester mockMvcTester;
 
 	/*
 	# Estructura @Test
@@ -56,6 +56,7 @@ class UsuarioTests {
 		 fail();
 		}
 	}
+	*/
 
 	@Test
 	@DisplayName("Test listar todos los usuarios")
@@ -87,7 +88,7 @@ class UsuarioTests {
 
 		}
 	}
-// estos 3 de pruebas probablemente no esten bien
+	// estos 3 de pruebas probablemente no esten bien
 	@Test
 	@DisplayName("Test agregar usuario")
 	void testAddUsuario(){
@@ -135,14 +136,5 @@ class UsuarioTests {
 			fail();
 		}
 	}
-
-	@Test
-	@DisplayName("Rectificar precio producto")
-	void testFindProduct(){
-		Producto prueba = productoRepository.findById(1).get();
-		assertNotNull(prueba);
-		assertEquals(359990,prueba.getPrecio());
-	}
-*/
 
 }

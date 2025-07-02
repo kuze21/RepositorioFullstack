@@ -5,6 +5,8 @@ import com.example.proyectoperfulandia.repository.ProductoRepository;
 import com.example.proyectoperfulandia.services.ProductoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,8 +23,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 class  ProductoTests {
 
+	@Mock
 	@Autowired
 	ProductoRepository productoRepository;
+
+	@InjectMocks
 	@MockitoBean
 	ProductoService productoServiceMock;
 	@Autowired
@@ -67,10 +72,66 @@ class  ProductoTests {
 
 	@Test
 	@DisplayName("Rectificar precio producto")
-	void testFindProduct(){
+	void testFindProducto(){
 		Producto prueba = productoRepository.findById(1).get();
 		assertNotNull(prueba);
 		assertEquals(359990,prueba.getPrecio());
+	}
+
+	@Test
+	@DisplayName("Test agregar producto")
+	void testAddProducto(){
+		try {
+			Producto prueba = new Producto();
+			productoServiceMock.agregarProducto(prueba);
+			prueba.setNombre("Producto Prueba");
+			prueba.setId(123);
+			assertNotNull(prueba);
+			assertNotNull(productoServiceMock.obtenerProductoID(123));
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
+	}
+
+	@Test
+	@DisplayName("Test elimar producto")
+	void testRemoveProducto(){
+		try {
+			Producto prueba = new Producto();
+			productoServiceMock.agregarProducto(prueba);
+			prueba.setNombre("Producto Prueba");
+			prueba.setId(123);
+			productoServiceMock.eliminarProducto(123);
+			assertNull(productoServiceMock.obtenerProductoID(123));
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
+	}
+
+	@Test
+	@DisplayName("Test actualizar producto")
+	void testUpdateProducto(){
+		try {
+			Producto prueba = new Producto();
+			prueba.setNombre("Producto Prueba");
+			prueba.setId(123);
+			Producto actualizacion = new Producto();
+			actualizacion.setNombre("Producto Actualizado");
+			actualizacion.setId(123);
+			productoServiceMock.agregarProducto(prueba);
+			assertNotNull(productoServiceMock.obtenerProductoID(123));
+			productoServiceMock.actualizarProducto(123,actualizacion);
+			assertEquals("Producto Actualizado",productoRepository.findById(123).get().getNombre());
+
+		}
+		catch(Exception ex){
+			System.out.println(ex.getMessage());
+			fail();
+		}
 	}
 
 }
