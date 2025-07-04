@@ -42,6 +42,7 @@ class UsuarioTests {
 	@Autowired
 	private MockMvcTester mockMvcTester;
 
+	// Test unitario encargado de probar la función getUsuarios, utilizada para obtener una lista de todos los usuarios
 	@Test
 	@DisplayName("Test listar todos los usuarios")
 	void testGetUsuarios(){
@@ -71,6 +72,7 @@ class UsuarioTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función getUsuario, utilizada para obtener un usuario a partir de una id
 	@Test
 	@DisplayName("Test comprobar usuario")
 	void testGetUsuario(){
@@ -88,7 +90,8 @@ class UsuarioTests {
 
 		}
 	}
-	// estos 3 de pruebas probablemente no esten bien
+
+	// Test unitario encargado de probar la función addUsuario, utilizada para agregar un usuario
 	@Test
 	@DisplayName("Test agregar usuario")
 	void testAddUsuario(){
@@ -104,6 +107,7 @@ class UsuarioTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función removeUsuario, utilizada para eliminar un usuario
 	@Test
 	@DisplayName("Test elimar usuario")
 	void testRemoveUsuario(){
@@ -119,6 +123,7 @@ class UsuarioTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función updateUsuario, utilizada para actualizar la información de un usuario
 	@Test
 	@DisplayName("Test actualizar usuario")
 	void testUpdateUsuario(){

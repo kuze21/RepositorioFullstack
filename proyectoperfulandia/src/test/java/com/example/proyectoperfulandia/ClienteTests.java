@@ -38,6 +38,7 @@ class ClienteTests {
 	@Autowired
 	MockMvc mockMvc;
 
+	// Test unitario encargado de probar la función getClientes, utilizada para obtener una lista de todos los clientes
 	@Test
 	@DisplayName("Test listar todos los clientes")
 	void testGetClientes(){
@@ -70,6 +71,7 @@ class ClienteTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función addCliente, utilizada para agregar un cliente
 	@Test
 	@DisplayName("Test agregar cliente")
 	void testAddCliente(){
@@ -87,6 +89,7 @@ class ClienteTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función removeCliente, utilizada para eliminar un cliente
 	@Test
 	@DisplayName("Test elimar cliente")
 	void testRemoveCliente(){
@@ -104,6 +107,7 @@ class ClienteTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función updateCliente, utilizada para actualizar la información de un cliente
 	@Test
 	@DisplayName("Test actualizar cliente")
 	void testActualizarCliente(){

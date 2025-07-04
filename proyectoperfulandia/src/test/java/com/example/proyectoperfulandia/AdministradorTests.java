@@ -38,6 +38,7 @@ class AdministradorTests {
 	@Autowired
 	MockMvc mockMvc;
 
+	// Test unitario encargado de probar la función getAdmins, utilizada para obtener una lista de todos los administradores
 	@Test
 	@DisplayName("Test listar todos los administradores")
 	void testGetAdmins(){
@@ -69,6 +70,7 @@ class AdministradorTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función addAdmin, utilizada para agregar un administrador
 	@Test
 	@DisplayName("Test agregar administrador")
 	void testAddAdmin(){
@@ -86,6 +88,7 @@ class AdministradorTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función removeAdmin, utilizada para eliminar un administrador
 	@Test
 	@DisplayName("Test elimar administrador")
 	void testRemoveAdmin(){
@@ -103,6 +106,7 @@ class AdministradorTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función updateAdmin, utilizada para actualizar la información de un administrador
 	@Test
 	@DisplayName("Test actualizar administrador")
 	void testUpdateAdmin(){

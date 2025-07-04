@@ -38,6 +38,7 @@ class EmpleadoTests {
 	@Autowired
 	MockMvc mockMvc;
 
+	// Test unitario encargado de probar la función getEmpleados, utilizada para obtener una lista de todos los empleados
 	@Test
 	@DisplayName("Test listar todos los empleados")
 	void testGetEmpleados(){
@@ -69,6 +70,7 @@ class EmpleadoTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función addEmpleado, utilizada para agregar un empleado
 	@Test
 	@DisplayName("Test agregar empleado")
 	void testAddEmpleado(){
@@ -86,6 +88,7 @@ class EmpleadoTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función removeEmpleado, utilizada para eliminar un empleado
 	@Test
 	@DisplayName("Test elimar empleado")
 	void testRemoveEmpleado(){
@@ -103,6 +106,7 @@ class EmpleadoTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función updateEmpleado, utilizada para actualizar la información de un empleado
 	@Test
 	@DisplayName("Test actualizar empleado")
 	void testUpdateEmpleado(){

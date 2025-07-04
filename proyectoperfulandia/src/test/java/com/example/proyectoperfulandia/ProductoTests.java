@@ -36,6 +36,7 @@ class  ProductoTests {
 	@Autowired
 	MockMvc mockMvc;
 
+	// Test unitario encargado de probar la función getProductos, utilizada para obtener una lista de todos los productos
 	@Test
 	@DisplayName("Test listar productos")
 	void testGetProductos(){
@@ -55,6 +56,7 @@ class  ProductoTests {
 		}
 	}
 
+	// Test unitario encargado de compprobar el precio un producto
 	@Test
 	@DisplayName("Rectificar precio producto")
 	void testFindProducto(){
@@ -63,6 +65,7 @@ class  ProductoTests {
 		assertEquals(359990,prueba.getPrecio());
 	}
 
+	// Test unitario encargado de probar la función addProducto, utilizada para agregar un producto
 	@Test
 	@DisplayName("Test agregar producto")
 	void testAddProducto(){
@@ -80,6 +83,7 @@ class  ProductoTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función removeProducto, utilizada para eliminar un producto
 	@Test
 	@DisplayName("Test elimar producto")
 	void testRemoveProducto(){
@@ -97,6 +101,7 @@ class  ProductoTests {
 		}
 	}
 
+	// Test unitario encargado de probar la función updateProducto, utilizada para actualizar la información de un producto
 	@Test
 	@DisplayName("Test actualizar producto")
 	void testUpdateProducto(){
