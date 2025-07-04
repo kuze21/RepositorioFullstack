@@ -11,17 +11,16 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 @Component
 public class EmpleadoModelAssembler implements RepresentationModelAssembler<Empleado, EntityModel<Empleado>> {
 
-    /*
-    RepresentionalModel = Permite a la clase contener una lista de Links de acceso
-    EntityModel = Es un contenedor generico que adjunta la entidad mas una serie de enlaces
-    LinkTo = Es un metodo que nos permite construir los Links o URL's de acceso que posee nuestro controlador
-    */
     @Override
     public EntityModel<Empleado> toModel(Empleado user) {
         return EntityModel.of(user,
+                // Enlace a sí mismo - permite obtener este usuario específico
                 linkTo(methodOn(EmpleadoController.class).getEmpleado(user.getId())).withSelfRel(),
+                // Enlace a la colección - permite navegar a todos los usuario
                 linkTo(methodOn(EmpleadoController.class).getEmpleados()).withRel("empleados"),
+                // Enlace para actualizar - permite modificar este usuario
                 linkTo(methodOn(EmpleadoController.class).updateEmpleado(user.getId(), user)).withRel("PUT"),
+                // Enlace para eliminar - permite borrar este usuario
                 linkTo(methodOn(EmpleadoController.class).removeEmpleado(user.getId())).withRel("DELETE")
         );
     }

@@ -14,6 +14,7 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("API Proyecto Perfulandia")
                         .version("1.0")
-                        .description("Documentación de la API para el sistema de productos de Perfulandia"));
+                        .description("Documentación de la API para el sistema de productos de Perfulandia\n\n" +
+                                "Integrantes: David Garcia, Martin Pavez, Robert Groom"));
     }
 }
