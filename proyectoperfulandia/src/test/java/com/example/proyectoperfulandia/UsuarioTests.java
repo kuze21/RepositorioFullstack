@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -96,7 +97,7 @@ class UsuarioTests {
 	void testGetUsuario(){
 		Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 		usuarioServiceMock.addUsuario(prueba);
-		when(usuarioServiceMock.getUsuario(123)).thenReturn(prueba);
+		when(usuarioServiceMock.getUsuario(123)).thenReturn(Optional.of(prueba));
 		try{
 			mockMvc.perform(get("/usuario"))
 					.andExpect(status().isOk())
