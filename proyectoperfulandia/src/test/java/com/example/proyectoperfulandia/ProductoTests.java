@@ -36,28 +36,6 @@ class  ProductoTests {
 	@Autowired
 	MockMvc mockMvc;
 
-	/*
-	# Estructura @Test
-	@Test
-	void testFuncion(){
-		# Se puede indicar un valor para suplantar y acotar el resultado que se espera de la funcion.
-		when().thenReturn("");
-
-		# Bloque try/catch permite probar un segmento o funcion y agarrar el error
-		# mockMvc permite consultas HTTPMethod
-		try{
-			mockMvc.perform(get("/"))
-			.andExpect(status().isOk())
-			.andExpect(content().string(""))
-		}
-
-		catch(Exception ex){
-		 System.out.println(ex.getMessage());
-		 fail();
-		}
-	}
-	*/
-
 	@Test
 	@DisplayName("Test listar productos")
 	void testGetProductos(){
