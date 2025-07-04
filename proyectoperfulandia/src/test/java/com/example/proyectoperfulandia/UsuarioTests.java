@@ -1,6 +1,5 @@
 package com.example.proyectoperfulandia;
 
-import com.example.proyectoperfulandia.model.Empleado;
 import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.UsuarioRepository;

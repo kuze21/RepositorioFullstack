@@ -1,9 +1,7 @@
 package com.example.proyectoperfulandia;
 
-import com.example.proyectoperfulandia.model.Administrador;
 import com.example.proyectoperfulandia.model.Empleado;
 import com.example.proyectoperfulandia.model.EnumRol;
-import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.EmpleadoRepository;
 import com.example.proyectoperfulandia.services.EmpleadoService;
 import org.junit.jupiter.api.DisplayName;
