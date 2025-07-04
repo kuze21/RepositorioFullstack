@@ -1,9 +1,7 @@
 package com.example.proyectoperfulandia;
 
-import com.example.proyectoperfulandia.model.Administrador;
 import com.example.proyectoperfulandia.model.Cliente;
 import com.example.proyectoperfulandia.model.EnumRol;
-import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.ClienteRepository;
 import com.example.proyectoperfulandia.services.ClienteService;
 import org.junit.jupiter.api.DisplayName;
@@ -39,26 +37,6 @@ class ClienteTests {
 
 	@Autowired
 	MockMvc mockMvc;
-
-	/*
-	# Estructura @Test
-	@Test
-	void testFuncion(){
-		# Se puede indicar un valor para suplantar y acotar el resultado que se espera de la funcion.
-		when().thenReturn("");
-		# Bloque try/catch permite probar un segmento o funcion y agarrar el error
-		# mockMvc permite consultas HTTPMethod
-		try{
-			mockMvc.perform(get("/"))
-			.andExpect(status().isOk())
-			.andExpect(content().string(""))
-		}
-		catch(Exception ex){
-		 System.out.println(ex.getMessage());
-		 fail();
-		}
-	}
-	*/
 
 	@Test
 	@DisplayName("Test listar todos los clientes")

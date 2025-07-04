@@ -1,6 +1,5 @@
 package com.example.proyectoperfulandia;
 
-import com.example.proyectoperfulandia.model.Empleado;
 import com.example.proyectoperfulandia.model.EnumRol;
 import com.example.proyectoperfulandia.model.Usuario;
 import com.example.proyectoperfulandia.repository.UsuarioRepository;
@@ -18,6 +17,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -41,26 +41,6 @@ class UsuarioTests {
 	MockMvc mockMvc;
 	@Autowired
 	private MockMvcTester mockMvcTester;
-
-	/*
-	# Estructura @Test
-	@Test
-	void testFuncion(){
-		# Se puede indicar un valor para suplantar y acotar el resultado que se espera de la funcion.
-		when().thenReturn("");
-		# Bloque try/catch permite probar un segmento o funcion y agarrar el error
-		# mockMvc permite consultas HTTPMethod
-		try{
-			mockMvc.perform(get("/"))
-			.andExpect(status().isOk())
-			.andExpect(content().string(""))
-		}
-		catch(Exception ex){
-		 System.out.println(ex.getMessage());
-		 fail();
-		}
-	}
-	*/
 
 	@Test
 	@DisplayName("Test listar todos los usuarios")
@@ -96,7 +76,7 @@ class UsuarioTests {
 	void testGetUsuario(){
 		Usuario prueba = new Usuario(123,"11111111-1","Usuario Prueba",EnumRol.CLIENTE,"prueba@gmail.com","Claveprueba");
 		usuarioServiceMock.addUsuario(prueba);
-		when(usuarioServiceMock.getUsuario(123)).thenReturn(prueba);
+		when(usuarioServiceMock.getUsuario(123)).thenReturn(Optional.of(prueba));
 		try{
 			mockMvc.perform(get("/usuario"))
 					.andExpect(status().isOk())
